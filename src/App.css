@@ -371,7 +371,8 @@ width: 70%;
     height: 30px;
     border-radius: 10px;
     transition: 0.2s ease;
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .search-crypto .search-button button:hover{
     background-color: transparent;
@@ -398,7 +399,7 @@ width: 70%;
     column-gap: 5rem;
 }
 .transactionCont{
-    background-color: lightgray;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 5px 7px 5px #888888;
     margin-bottom: 30px;
@@ -407,6 +408,7 @@ width: 70%;
 
 .transactionCont .title{
     border-bottom: 1px solid black;
+    padding: 5px;
 }
 .transactionCont .body p{
     width: 100%;

@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { io } from 'socket.io-client';
 
 const Address = () => {
-  const [trans, setTrans] = useState(null);
+  const [trans, setTransactions] = useState(null);
   const [state, setState] = useState({
     btcAddress: '',
     btcBalance: '',
@@ -44,8 +44,7 @@ const Address = () => {
     axios
       .get(urlTransactions)
       .then((response) => {
-        console.log('responsee', response);
-        setTrans(response.data);
+        setTransactions(response.data);
       })
       .then((response) => response.data.txs.inputs.prev_out.map((transaction) => ({
           value: `${transaction.inputs.prev_out.value}`,
@@ -94,12 +93,18 @@ const Address = () => {
           trans?.txs?.map((transaction) => (
             <div className="transactionCont">
               <div className="title">
-                <p>TITULLI</p>
+                <p><b>Hash</b></p>
+                <div className="search-button">
                 <button type="submit" onClick={() => handleSubscription(transaction.hash)}> Subscribe</button>
+                </div>
               </div>
               <div className="body">
+                <p><b>Address:</b>{state.btcAddress}</p>
                 <p><b>Value:</b>{transaction.balance}</p>
                 <p><b>Hash:</b>{transaction.hash}</p>
+                <p><b>Fee:</b>{transaction.fee}</p>
+                <p><b>Size:</b>{transaction.size}</p>
+                <p><b>Result:</b>{transaction.result}</p>
               </div>
             </div>
           ))
