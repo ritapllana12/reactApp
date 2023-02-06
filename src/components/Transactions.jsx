@@ -12,5 +12,5 @@ const Transactions = () => (
       <Address />
     </div>
   </>
-      );
+  );
   export default Transactions;
