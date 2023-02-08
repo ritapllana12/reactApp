@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { io } from 'socket.io-client';
 
 const Address = () => {
-  const [trans, setTransactions] = useState(null);
+  const [transactions, setTransactions] = useState(null);
   const [state, setState] = useState({
     btcAddress: '',
     btcBalance: '',
@@ -35,10 +35,6 @@ const Address = () => {
       setState({ ...state, errorMsg: 'BTC Address has to be 34 characters' });
       return;
     }
-    const urlBalance = `https://blockchain.info/q/addressbalance/${state.btcAddress}`;
-    fetch(urlBalance)
-      .then((res) => res.json())
-      .then((json) => setState({ ...state, btcBalance: `BTC Balance: ${json / 100000000}` }));
 
     const urlTransactions = `https://blockchain.info/rawaddr/${state.btcAddress}`;
     axios
@@ -90,7 +86,7 @@ const Address = () => {
       <h4>{state.btcBalance}</h4>
       <div className="mainTransCont">
         {!state.isLoading ? (
-          trans?.txs?.map((transaction) => (
+          transactions?.txs?.map((transaction) => (
             <div className="transactionCont">
               <div className="title">
                 <p><b>Hash</b></p>
