@@ -41,7 +41,6 @@ const Cryptocurrencies = ({ simplified }) => {
             className="crypto-card"
             key={currency.uuid}
           >
-            <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
                 extra={<img className="crypto-image" alt="" src={currency.iconUrl} />}
@@ -51,7 +50,6 @@ const Cryptocurrencies = ({ simplified }) => {
                 <p>Market Cap: {millify(currency.marketCap)}</p>
                 <p>Daily Change: {currency.change}%</p>
               </Card>
-            </Link>
           </Col>
         ))}
       </Row>
